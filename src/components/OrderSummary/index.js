@@ -3,7 +3,7 @@ import React from "react";
 const OrderSummary = (props) => {
   return (
     <div>
-      <h3>Таны захиалга</h3>
+      <h3>Таны зах</h3>
       <p>Таны сонгосон орцууд: </p>
       <ul>
         {Object.keys(props.ingredients).map((el) => (
