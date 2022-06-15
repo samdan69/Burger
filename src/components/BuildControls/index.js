@@ -20,7 +20,11 @@ const BuildControls = (props) => {
         />
       ))}
 
-      <button disabled={props.disabled} className={css.OrderButton}>
+      <button
+        onClick={props.showConfirmModal}
+        disabled={props.disabled}
+        className={css.OrderButton}
+      >
         ЗАХИАЛАХ
       </button>
     </div>

@@ -22,8 +22,20 @@ class BurgerBuilder extends Component {
     },
 
     totalPrice: 1000,
-
     purchasing: false,
+    confirmOrder: false,
+  };
+
+  continueOrder = () => {
+    console.log("continue daragdlaa...");
+  };
+
+  showConfirmModal = () => {
+    this.setState({ confirmOrder: true });
+  };
+
+  closeConfirmModal = () => {
+    this.setState({ confirmOrder: false });
   };
 
   ortsNemeh = (type) => {
@@ -57,14 +69,21 @@ class BurgerBuilder extends Component {
     }
     return (
       <div>
-        <Modal>
+        <Modal
+          closeConfirmModal={this.closeConfirmModal}
+          show={this.state.confirmOrder}
+        >
           <OrderSummary
+            onCancel={this.closeConfirmModal}
+            onContinue={this.continueOrder}
+            price={this.state.totalPrice}
             ingredientsNames={INGREDIENT_NAMES}
             ingredients={this.state.ingredients}
           />
         </Modal>
         <Burger orts={this.state.ingredients} />
         <BuildControls
+          showConfirmModal={this.showConfirmModal}
           ingredientsNames={INGREDIENT_NAMES}
           disabled={!this.state.purchasing}
           price={this.state.totalPrice}
